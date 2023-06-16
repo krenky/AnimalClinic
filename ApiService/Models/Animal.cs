@@ -25,7 +25,7 @@ namespace ApiService.Models
 
         public virtual Doctor? Doctor { get; set; }
         public virtual Owner? Owner { get; set; }
-        public virtual ICollection<AnimalService> AnimalServices { get; set; }
-        public virtual ICollection<AnimalVaccine> AnimalVaccines { get; set; }
+        public virtual ICollection<AnimalService>? AnimalServices { get; set; }
+        public virtual ICollection<AnimalVaccine>? AnimalVaccines { get; set; }
     }
 }

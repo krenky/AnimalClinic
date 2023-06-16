@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  server:
+    image: ${DOCKER_REGISTRY-}apiservice
+    build:
+      context: .
+      dockerfile: ApiService/Dockerfile
+  client:
+    image: react-vite
+    build:
+        context: ./Frontend
+        dockerfile: Dockerfile

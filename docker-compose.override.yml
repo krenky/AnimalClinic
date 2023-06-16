@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:443"
+      - "4999:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  client:
+    ports:
+        - "5001:5173"

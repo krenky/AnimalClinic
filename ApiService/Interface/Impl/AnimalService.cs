@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiService.Interface.Impl
 {
-    public class AnimalServiceImpl : ICRUD<Animal>
+    public class AnimalServiceImpl : ICRUD<Animal>, IAnimalListService
     {
         private readonly ApplicationDataContext _context;
 
@@ -48,6 +48,25 @@ namespace ApiService.Interface.Impl
         {
             if (_context.SaveChanges() < 1)
                 throw new DbUpdateException("Сохранение не удачно");
+        }
+
+        public ICollection<Animal> GetAnimalsWithOwnerDoctor()
+        {
+            ICollection<Animal> animals = _context.Animals.ToList();
+            foreach(Animal animal in animals)
+            {
+                animal.Owner = _context.Owners.Find(animal.OwnerId);
+                animal.Doctor = _context.Doctors.Find(animal.DoctorId);
+            }
+            return animals;
+        }
+
+        public Animal GetAnimalWithOwnerDoctor(int animalId)
+        {
+            Animal animal = _context.Animals.Find(animalId);
+            animal.Doctor = _context.Doctors.Find(animal.DoctorId);
+            animal.Owner = _context.Owners.Find(animal.OwnerId);
+            return animal;
         }
     }
 }
