@@ -87,9 +87,9 @@ const AddOwner = () => {
 
 function AddNewOwner(newOwner: owner) {
     DataProvider.create<owner>('owner', newOwner)
-        .then(result => {
+        .then(() => {
             alert('сохранение успешно')
-            document.location = 'http://localhost:5173/owners';
+            document.location = 'http://localhost/owners';
         })
         .catch(() => {
             alert('сохранение не успешно')

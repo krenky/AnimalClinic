@@ -7,7 +7,7 @@ namespace ApiService.Data
     {
         public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
         public virtual DbSet<Animal> Animals { get; set; } = null!;
         public virtual DbSet<AnimalService> AnimalServices { get; set; } = null!;

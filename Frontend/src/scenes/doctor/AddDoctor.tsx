@@ -87,9 +87,9 @@ const AddDoctor = () => {
 
 function AddNewDoctor(newdoctor: doctor) {
     DataProvider.create<doctor>('doctor', newdoctor)
-        .then(result => {
+        .then(() => {
             alert('сохранение успешно')
-            document.location = 'http://localhost:5173/doctors';
+            document.location = 'http://localhost/doctors';
         })
         .catch(() => {
             alert('сохранение не успешно')

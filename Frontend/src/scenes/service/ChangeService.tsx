@@ -7,10 +7,6 @@ import { useEffect, useState } from "react";
 import DataProvider from '../../providers/dataProviders';
 import { useParams } from "react-router-dom";
 
-
-
-
-
 const ChangeService = () => {
     const initialValues = {
         name: "",

@@ -1,15 +1,41 @@
-version: '3.4'
+version: "3.9"
+networks:
+  deploy-guide-dev:
+    driver: bridge
 
 services:
+  postgres:
+      container_name: postgres
+      image: postgres
+      environment:
+        - POSTGRES_USER=app
+        - POSTGRES_PASSWORD=app
+        - POSTGRES_DB=mydbname
+      volumes:
+        - ./volumes/data/db:/var/lib/postgresql/data
+      ports:
+         - 5432:5432
+      networks:
+        - deploy-guide-dev
   server:
+    networks:
+      - deploy-guide-dev
     image: ${DOCKER_REGISTRY-}apiservice
     build:
       context: .
       dockerfile: ApiService/Dockerfile
+    depends_on:
+      - postgres
   client:
     image: react-vite
     build:
         context: ./Frontend
         dockerfile: Dockerfile
+    networks:
+      - deploy-guide-dev
   proxy:
     image: nginx:mainline
+    networks:
+      - deploy-guide-dev
+
+  

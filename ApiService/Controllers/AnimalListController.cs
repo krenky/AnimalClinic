@@ -1,6 +1,5 @@
 ﻿using ApiService.Interface;
 using ApiService.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiService.Controllers

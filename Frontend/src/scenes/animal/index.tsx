@@ -18,7 +18,7 @@ const AnimalList = () =>{
     const handleRowDoubleClick = (params: GridRowParams) => {
         const rowData: animal = params.row as animal;
         console.log('Selected Row Data:', rowData);;
-        document.location = 'http://localhost:5173/animals/' + rowData.id;
+        document.location = 'http://localhost/animals/' + rowData.id;
     };
 
     
@@ -86,7 +86,7 @@ export function ownerValueFormatter(params: GridValueFormatterParams<owner>): st
 
 function handleAddClick () {
     console.log('Add Row Data:');;
-    document.location = 'http://localhost:5173/animals/add';
+    document.location = 'http://localhost/animals/add';
 };
 
 export default AnimalList;

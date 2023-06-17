@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef, GridRowParams, GridToolbar, GridValueFormatterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams, GridToolbar } from '@mui/x-data-grid';
 import {vaccine } from '../../Type';
 import { useEffect, useState } from 'react';
 import { Box, IconButton } from '@mui/material';
@@ -17,7 +17,7 @@ const VaccineList = () =>{
     const handleRowDoubleClick = (params: GridRowParams) => {
         const rowData: vaccine = params.row as vaccine;
         console.log('Selected Row Data:', rowData);;
-        document.location = 'http://localhost:5173/vaccines/' + rowData.id;
+        document.location = 'http://localhost/vaccines/' + rowData.id;
     };
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const VaccineList = () =>{
 
 function handleAddClick() {
     console.log('Add Row Data:');;
-    document.location = 'http://localhost:5173/vaccines/add';
+    document.location = 'http://localhost/vaccines/add';
 };
 
 export default VaccineList;

@@ -108,20 +108,17 @@ const AddAnimal = () => {
                         <Button type="submit" color="secondary" variant="contained" onClick={() => {
                             let newAnimal:animal={
                                 name: values.name,
-                                ownerId:values.owner.value.id,
+                                ownerId:values.owner.value.id||'0',
                                 doctorId:values.doctor.value.id||'0'
                             }
                             DataProvider.create<animal>('animal', newAnimal)
-                                .then(result => {
+                                .then(() => {
                                     alert('сохранение успешно')
-                                    document.location = 'http://localhost:5173/animals';
+                                    document.location = 'http://localhost/animals';
                                 })
                                 .catch(() => {
                                     alert('сохранение не успешно')
                                 });
-                                // DataProvider.update<animal>('animal', params.id as string, changedAnimal)
-                                // .then(result => alert('Запись обновлена' + result.data?.name))
-                                // .catch(() => alert('ошибка'));
                         }}>
                             Сохранение
                         </Button>

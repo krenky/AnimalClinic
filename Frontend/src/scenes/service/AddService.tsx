@@ -87,9 +87,9 @@ const AddService = () => {
 
 function AddNewService(newService: service) {
     DataProvider.create<service>('service', newService)
-        .then(result => {
+        .then(() => {
             alert('сохранение успешно')
-            document.location = 'http://localhost:5173/services';
+            document.location = 'http://localhost/services';
         })
         .catch(() => {
             alert('сохранение не успешно')

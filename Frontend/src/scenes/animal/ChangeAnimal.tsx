@@ -2,8 +2,8 @@ import { Box, Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { animal, animalService, animalVaccine, arrayVaccineAndService, doctor, option, owner, service, vaccine } from "../../Type";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { animal, animalService, animalVaccine, arrayVaccineAndService, option, service, vaccine } from "../../Type";
+import { useLayoutEffect, useState } from "react";
 import DataProvider from '../../providers/dataProviders';
 import { useParams } from "react-router-dom";
 import SelectField from 'react-select';
@@ -72,37 +72,11 @@ const ChangeAnimal = () => {
                 }
             } catch (error) {
                 console.error(error);
-            } finally {
-                //setIsLoading(false);
-            }
-            //setIsLoading(false);
+            } 
         };
 
         fetchData();
     }, []);
-
-    // useLayoutEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await DataProvider.getOneWithoutId<arrayVaccineAndService>('vaccineservice')
-    //             if (data.data) {
-    //                 let serv = data.data.services.map(ConvertServiceToServiceOption)
-    //                 let vacc = data.data.vaccines.map(ConvertVaccineToVaccineOption)
-    //                 initialValues.service =  ConvertAnimalServiceToServiceOption(initialValues.animalService, serv)
-    //                 setServiceOption(serv)
-    //                 setVaccineOption(vacc)
-
-    //             }
-    //         } catch (error) {
-    //             console.error(error);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //         setIsLoading(false);
-    //     };
-
-    //     fetchData();
-    // }, []);
 
 
     return <Box m={"20px"}>
@@ -194,27 +168,17 @@ const ChangeAnimal = () => {
                             if (changedAnimal) {
                                 changedAnimal.name = values.name
                                 changedAnimal.animalServices = values.service.map((values) => {
-                                    // let animalService: animalService = {
-                                    //     animalsId: currentAnimal?.id || ' ',
-                                    //     servicesId: values.value.id || ' ',
-                                    //     date: new Date()
-                                    // }
-                                    // return animalService;
+                                    values.value.animalsId = currentAnimal?.id;
                                     return values.value;
                                 })
                                 changedAnimal.animalVaccines = values.vaccine.map((values) => {
-                                    // let animalService: animalVaccine = {
-                                    //     animalsId: currentAnimal?.id || ' ',
-                                    //     vaccinesId: values.value.id || ' ',
-                                    //     date: new Date()
-                                    // }
-                                    // return animalService;
+                                    values.value.animalsId = currentAnimal?.id;
                                     return values.value;
                                 })
                                 DataProvider.update<animal>('animal', params.id as string, changedAnimal)
                                     .then(result => {
                                         alert('Запись обновлена' + result.data?.name)
-                                        document.location = 'http://localhost:5173/animals';
+                                        document.location = 'http://localhost/animals';
                                     })
                                     .catch(() => alert('ошибка'));
                             }
@@ -244,18 +208,12 @@ function ConvertVaccineToVaccineOption(_vaccine: vaccine, animal:animal|undefine
     let vaccineOption = {
         value: {
             animalsId: animal?.id,
-            vaccineId: _vaccine.id,
+            vaccinesId: _vaccine.id,
             date: new Date()
         },
         label: _vaccine.name
     } as option<animalVaccine>
     return vaccineOption;
-}
-
-function ConvertAnimalServiceToServiceOption(animalService: animalService[], options: option<service>[]): option<service>[] {
-    let va = options.filter(value => animalService.find(x => x.servicesId == value.value.id))
-    console.log(va)
-    return va;
 }
 
 function ConvertServiceAndAnimalServiceToOption(animalServices:animalService[], services:service[]):option<animalService>[]{

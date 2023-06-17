@@ -18,7 +18,7 @@ const DoctorList = () => {
     const handleRowDoubleClick = (params: GridRowParams) => {
         const rowData: doctor = params.row as doctor;
         console.log('Selected Row Data:', rowData);;
-        document.location = 'http://localhost:5173/doctors/' + rowData.id;
+        document.location = 'http://localhost/doctors/' + rowData.id;
     };
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export const ArrayAnimalValueFormatter = (params: GridValueFormatterParams<anima
 
 function handleAddClick () {
     console.log('Add Row Data:');;
-    document.location = 'http://localhost:5173/doctors/add';
+    document.location = 'http://localhost/doctors/add';
 };
 
 export default DoctorList;
