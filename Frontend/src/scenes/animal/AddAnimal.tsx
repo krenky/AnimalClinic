@@ -26,11 +26,11 @@ const AddAnimal = () => {
     const handleForSumbit = (values: any) => {
         console.log(values)
     }
-    
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await DataProvider.getOneWithoutId<arrayOwnerAndDoctor>('DTO')
+                const data = await DataProvider.getOneWithoutId<arrayOwnerAndDoctor>('ownerdoctor')
                 if (data.data) {
                     setDoctorOption(data.data.doctors.map(ConvertDoctorToDoctorOption))
                     setOwnerOption(data.data.owners.map(ConvertOwnerToOwnerOption))

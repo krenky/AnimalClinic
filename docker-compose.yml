@@ -11,3 +11,5 @@ services:
     build:
         context: ./Frontend
         dockerfile: Dockerfile
+  proxy:
+    image: nginx:mainline

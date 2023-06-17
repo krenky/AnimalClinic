@@ -37,7 +37,7 @@ namespace ApiService.Data
 
             modelBuilder.Entity<AnimalService>(entity =>
             {
-                entity.HasKey(e => new { e.AnimalsId, e.ServicesId });
+                entity.HasKey(e => new { e.Id });
 
                 entity.ToTable("AnimalService");
 
@@ -54,7 +54,7 @@ namespace ApiService.Data
 
             modelBuilder.Entity<AnimalVaccine>(entity =>
             {
-                entity.HasKey(e => new { e.AnimalsId, e.VaccinesId });
+                entity.HasKey(e => new { e.Id });
 
                 entity.ToTable("AnimalVaccine");
 

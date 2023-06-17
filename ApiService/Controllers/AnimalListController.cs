@@ -23,7 +23,7 @@ namespace ApiService.Controllers
         [HttpGet("{id}")]
         public Animal GetAnimalWithOwnerAndDoctor(int id)
         {
-            return _animal.GetAnimalWithOwnerDoctor(id);
+            return _animal.GetAnimalWithAllData(id);
         }
     }
 }

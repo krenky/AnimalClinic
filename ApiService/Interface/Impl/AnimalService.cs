@@ -28,7 +28,12 @@ namespace ApiService.Interface.Impl
 
         public void Change(int id, Animal newData)
         {
-            _context.Entry(newData).State = EntityState.Modified;
+            Animal animal = _context.Animals.Find(id);
+            SaveDeleteAnimalService(newData);
+            SaveDeleteAnimalVaccine(newData);
+            animal.Name = newData.Name;
+            animal.AnimalVaccines = newData.AnimalVaccines;
+            animal.AnimalServices = newData.AnimalServices;
             SaveChanges();
         }
 
@@ -61,12 +66,26 @@ namespace ApiService.Interface.Impl
             return animals;
         }
 
-        public Animal GetAnimalWithOwnerDoctor(int animalId)
+        public Animal GetAnimalWithAllData(int animalId)
         {
             Animal animal = _context.Animals.Find(animalId);
             animal.Doctor = _context.Doctors.Find(animal.DoctorId);
             animal.Owner = _context.Owners.Find(animal.OwnerId);
+            animal.AnimalVaccines = _context.AnimalVaccines.Where(x => x.AnimalsId == animal.Id).ToList();
+            animal.AnimalServices = _context.AnimalServices.Where(x => x.AnimalsId == animal.Id).ToList();
             return animal;
+        }
+
+        private void SaveDeleteAnimalService(Animal animal)
+        {
+            List<AnimalService> deleteAnimalServices = _context.AnimalServices.Where(x => !animal.AnimalServices.Contains(x) && animal.Id == x.AnimalsId).ToList();
+            _context.AnimalServices.RemoveRange(deleteAnimalServices);
+        }
+
+        private void SaveDeleteAnimalVaccine(Animal animal)
+        {
+            List<AnimalVaccine> deleteAnimalVaccines = _context.AnimalVaccines.Where(x => !animal.AnimalVaccines.Contains(x) && animal.Id == x.AnimalsId).ToList();
+            _context.AnimalVaccines.RemoveRange(deleteAnimalVaccines);
         }
     }
 }

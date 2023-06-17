@@ -19,5 +19,12 @@ namespace ApiService.Interface.Impl
             arrayOwnerAndDoctor.Owners = _context.Owners.ToList();
             return arrayOwnerAndDoctor;
         }
+        public ArrayVaccineAndService GetArrayVaccineAndService()
+        {
+            ArrayVaccineAndService arrayVaccineAndService = new ArrayVaccineAndService();
+            arrayVaccineAndService.Vaccines = _context.Vaccines.ToList();
+            arrayVaccineAndService.Services = _context.Services.ToList();
+            return arrayVaccineAndService;
+        }
     }
 }
