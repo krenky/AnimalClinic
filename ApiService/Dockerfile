@@ -13,8 +13,11 @@ COPY . .
 WORKDIR "/src/ApiService"
 RUN dotnet build "ApiService.csproj" -c Release -o /app/build
 
+
+
 FROM build AS publish
 RUN dotnet publish "ApiService.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
 
 FROM base AS final
 WORKDIR /app

@@ -1,13 +1,8 @@
-import { Box, Button, Checkbox, CircularProgress, FormControlLabel, Modal, TextField, useTheme } from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Box, Button, TextField } from "@mui/material";
+import { Form, Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-//import { InventoryItem, RegisterModel, RepairOrder, RepairWork, SalesStages } from "../../Type"
-//import React, { useEffect, useState } from "react";
-//import CurrencyTextField from '@unicef/material-ui-currency-textfield'
-//import { Option, SelecField } from "../../components/SelectField";
-//import { optionCSS } from "react-select/lib/components/Option";
-import { animal, doctor, owner } from "../../Type";
+import { owner } from "../../Type";
 import { useEffect, useState } from "react";
 import DataProvider from '../../providers/dataProviders';
 import { useParams } from "react-router-dom";

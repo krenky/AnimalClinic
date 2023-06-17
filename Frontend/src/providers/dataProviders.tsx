@@ -19,7 +19,7 @@ export class DataProvider {
 
     constructor(url:string) {
         this.http = axios.create({
-            baseURL: url || 'https://localhost:7051/api',
+            baseURL: url || 'http://localhost/api',
         });
 
         // Set the token from local storage if it exists
@@ -47,7 +47,7 @@ export class DataProvider {
         });
     }
 
-    async getList<T>(resource: string, params?: any): Promise<DataProviderResponse<T[]>> {
+    async getList<T>(resource: string): Promise<DataProviderResponse<T[]>> {
         const { data } = await this.request<T[]>({
             method: 'get',
             url: `/${resource}`,
@@ -115,4 +115,4 @@ export class DataProvider {
     }
 }
 
-export default new DataProvider('https://localhost:7051/api');
+export default new DataProvider('http://localhost/api');

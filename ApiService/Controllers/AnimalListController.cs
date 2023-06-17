@@ -1,6 +1,5 @@
 ﻿using ApiService.Interface;
 using ApiService.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiService.Controllers
@@ -23,7 +22,7 @@ namespace ApiService.Controllers
         [HttpGet("{id}")]
         public Animal GetAnimalWithOwnerAndDoctor(int id)
         {
-            return _animal.GetAnimalWithOwnerDoctor(id);
+            return _animal.GetAnimalWithAllData(id);
         }
     }
 }

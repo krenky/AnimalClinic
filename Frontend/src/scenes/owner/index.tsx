@@ -18,7 +18,7 @@ const OwnerList = () =>{
     const handleRowDoubleClick = (params: GridRowParams) => {
         const rowData: owner = params.row as owner;
         console.log('Selected Row Data:', rowData);;
-        document.location = 'http://localhost:5173/owners/' + rowData.id;
+        document.location = 'http://localhost/owners/' + rowData.id;
     };
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export const ArrayAnimalValueFormatter = (params: GridValueFormatterParams<anima
 
 function handleAddClick () {
     console.log('Add Row Data:');;
-    document.location = 'http://localhost:5173/owners/add';
+    document.location = 'http://localhost/owners/add';
 };
 
 export default OwnerList;

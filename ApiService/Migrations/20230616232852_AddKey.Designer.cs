@@ -3,6 +3,7 @@ using System;
 using ApiService.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApiService.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20230616232852_AddKey")]
+    partial class AddKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,24 +53,16 @@ namespace ApiService.Migrations
 
             modelBuilder.Entity("ApiService.Models.AnimalService", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("AnimalsId")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AnimalsId")
+                    b.Property<int>("ServicesId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("ServicesId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalsId");
+                    b.HasKey("AnimalsId", "ServicesId", "Date");
 
                     b.HasIndex(new[] { "ServicesId" }, "IX_AnimalService_ServicesId");
 
@@ -77,24 +71,16 @@ namespace ApiService.Migrations
 
             modelBuilder.Entity("ApiService.Models.AnimalVaccine", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("AnimalsId")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AnimalsId")
+                    b.Property<int>("VaccinesId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("Date")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("VaccinesId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalsId");
+                    b.HasKey("AnimalsId", "VaccinesId");
 
                     b.HasIndex(new[] { "VaccinesId" }, "IX_AnimalVaccine_VaccinesId");
 

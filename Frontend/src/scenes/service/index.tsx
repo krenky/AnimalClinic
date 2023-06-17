@@ -17,7 +17,7 @@ const ServiceList = () => {
     const handleRowDoubleClick = (params: GridRowParams) => {
         const rowData: service = params.row as service;
         console.log('Selected Row Data:', rowData);;
-        document.location = 'http://localhost:5173/services/' + rowData.id;
+        document.location = 'http://localhost/services/' + rowData.id;
     };
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const ServiceList = () => {
 
 function handleAddClick() {
     console.log('Add Row Data:');;
-    document.location = 'http://localhost:5173/services/add';
+    document.location = 'http://localhost/services/add';
 };
 
 export default ServiceList;

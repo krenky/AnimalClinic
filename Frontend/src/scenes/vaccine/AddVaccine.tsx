@@ -87,9 +87,9 @@ const AddVaccine = () => {
 
 function AddNewVaccine(newVaccine: vaccine) {
     DataProvider.create<vaccine>('vaccine', newVaccine)
-        .then(result => {
+        .then(() => {
             alert('сохранение успешно')
-            document.location = 'http://localhost:5173/vaccines';
+            document.location = 'http://localhost/vaccines';
         })
         .catch(() => {
             alert('сохранение не успешно')

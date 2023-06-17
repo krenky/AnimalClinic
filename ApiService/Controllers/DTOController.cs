@@ -1,6 +1,5 @@
 ﻿using ApiService.Interface;
 using ApiService.Models.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiService.Controllers
@@ -16,10 +15,15 @@ namespace ApiService.Controllers
             _dtoService = dtoService;
         }
 
-        [HttpGet]
+        [HttpGet("/api/ownerdoctor")]
         public ArrayOwnerAndDoctor GetArrayOwnerAndDoctor()
         {
             return _dtoService.GetArrayOwnerAndDoctor();
+        }
+        [HttpGet("/api/vaccineservice")]
+        public ArrayVaccineAndService GetArrayVaccineAndService()
+        {
+            return _dtoService.GetArrayVaccineAndService();
         }
     }
 }

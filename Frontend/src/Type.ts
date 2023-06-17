@@ -4,7 +4,9 @@ export interface animal{
     ownerId: string,
     doctorId: string,
     doctor?: doctor,
-    owner?: owner
+    owner?: owner,
+    animalServices?: animalService[],
+    animalVaccines?: animalVaccine[]
 }
 
 export interface doctor{
@@ -33,6 +35,19 @@ export interface vaccine{
     price: string
 }
 
+export interface animalService{
+    id?: string,
+    animalsId?: string,
+    servicesId?: string,
+    date?: Date
+}
+export interface animalVaccine{
+    id?: string,
+    animalsId?: string,
+    vaccinesId?: string,
+    date?: Date
+}
+
 export type option<T> = {
     value: T,
     label: string
@@ -42,5 +57,10 @@ export type option<T> = {
 export interface arrayOwnerAndDoctor{
     owners: owner[],
     doctors: doctor[]
+}
+
+export interface arrayVaccineAndService{
+    services: service[],
+    vaccines: vaccine[]
 }
 //#endregion

@@ -21,7 +21,8 @@ namespace ApiService.Controllers
         [HttpGet]
         public IEnumerable<Animal> Get()
         {
-            return _animals.GetList();
+            return new List<Animal>() { new Animal { Name = "fsadfd", Id = 1, DoctorId = 1, OwnerId = 1 } };
+            //return _animals.GetList();
         }
 
         // GET api/<AnimalController>/5

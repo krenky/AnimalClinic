@@ -6,6 +6,7 @@ namespace ApiService.Models
 {
     public partial class AnimalService
     {
+        public int Id { get; set; }
         public int AnimalsId { get; set; }
         public int ServicesId { get; set; }
         public DateTime? Date { get; set; }

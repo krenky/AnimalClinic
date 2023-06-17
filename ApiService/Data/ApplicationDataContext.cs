@@ -7,7 +7,7 @@ namespace ApiService.Data
     {
         public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
         public virtual DbSet<Animal> Animals { get; set; } = null!;
         public virtual DbSet<AnimalService> AnimalServices { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace ApiService.Data
 
             modelBuilder.Entity<AnimalService>(entity =>
             {
-                entity.HasKey(e => new { e.AnimalsId, e.ServicesId });
+                entity.HasKey(e => new { e.Id });
 
                 entity.ToTable("AnimalService");
 
@@ -54,7 +54,7 @@ namespace ApiService.Data
 
             modelBuilder.Entity<AnimalVaccine>(entity =>
             {
-                entity.HasKey(e => new { e.AnimalsId, e.VaccinesId });
+                entity.HasKey(e => new { e.Id });
 
                 entity.ToTable("AnimalVaccine");
 

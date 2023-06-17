@@ -5,6 +5,6 @@ namespace ApiService.Interface
     public interface IAnimalListService
     {
         public ICollection<Animal> GetAnimalsWithOwnerDoctor();
-        public Animal GetAnimalWithOwnerDoctor(int animalId);
+        public Animal GetAnimalWithAllData(int animalId);
     }
 }
