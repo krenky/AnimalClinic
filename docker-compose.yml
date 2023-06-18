@@ -8,8 +8,8 @@ services:
       container_name: postgres
       image: postgres
       environment:
-        - POSTGRES_USER=app
-        - POSTGRES_PASSWORD=app
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
         - POSTGRES_DB=mydbname
       volumes:
         - ./volumes/data/db:/var/lib/postgresql/data

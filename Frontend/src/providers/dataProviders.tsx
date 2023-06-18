@@ -19,7 +19,7 @@ export class DataProvider {
 
     constructor(url:string) {
         this.http = axios.create({
-            baseURL: url || 'http://localhost/api',
+            baseURL: url || import.meta.env.VITE_BACKEND_API// process.env["BACKEND_API"] //'http://localhost/api',
         });
 
         // Set the token from local storage if it exists
@@ -115,4 +115,4 @@ export class DataProvider {
     }
 }
 
-export default new DataProvider('http://localhost/api');
+export default new DataProvider(import.meta.env.VITE_BACKEND_API || 'http://localhost/api');
