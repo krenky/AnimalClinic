@@ -3,13 +3,34 @@
 asp net 6 + EF Core
 postgresql
 react + typescript
-## запуск 
-### 1
+## Запуск
+Для запуска требуется поднятый postgres server
+
+### 1 шаг
+Изменить строку подключения для БД в файле
+ApiService/appsettings.json
+### 2 шаг
+перейти в папку .\Frontend и выполнить команду 
 ```
-docker build
+npx vite
+```
+### 3 шаг
+перейти в папку .\ApiService и выполнить команду 
+```
+dotnet run
 ```
 
-### 2
+## Запуск с помощью docker compose
+### 1 шаг
 ```
-docker up
+docker-compose build
 ```
+
+### 2 шаг
+```
+docker-compose up
+```
+
+###### P.S. Think out of the box!
+
+
